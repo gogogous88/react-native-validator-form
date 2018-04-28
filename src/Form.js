@@ -64,17 +64,21 @@ class Form extends React.Component {
 
     submit(event) {
         if (event) {
-            event.preventDefault();
+          event.preventDefault();
         }
         this.errors = [];
-        const result = this.walk(this.childs);
+        var result = this.walk(this.childs);
         if (this.errors.length) {
-            this.props.onError(this.errors);
+          // console.log(this.errors.length);
+          this.props.onError(this.errors);
         }
         if (result) {
-            this.props.onSubmit(event);
+          return true;
+          // console.log("true");
+          // this.props.onSubmit(event);
         }
         return false;
+      }
     }
 
     walk(children) {
